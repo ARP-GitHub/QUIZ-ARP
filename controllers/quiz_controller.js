@@ -28,7 +28,7 @@ exports.index = function(req, res, next) {
 	//busqueda = busqueda.replace(' ','%');
 	busqueda = busqueda.replace(/\s/g,'%'); //reemplaza los espacios por %
    }
-   models.Quiz.findAll((busqueda) ? {where: ["lower(pregunta) like ?", busqueda], order:["pregunta"]} : {order:["pregunta"]}).then(
+   models.Quiz.findAll((busqueda) ? {where: ["lower(pregunta) like ?", busqueda], order:"pregunta ASC"} : {order:"pregunta ASC"}).then(
 	function(quizes) {
 	    res.render('quizes/index.ejs', { quizes: quizes});
         }
@@ -40,7 +40,7 @@ exports.index = function(req, res, next) {
 //	 busqueda = '%' + busqueda + '%';
 //	 busqueda = busqueda.toLowerCase().trim();
 //	 busqueda = busqueda.replace(/\s/g,'%');
-//	 models.Quiz.findAll({where: ["lower(pregunta) like ?", busqueda], order:["pregunta"]}).then(
+//	 models.Quiz.findAll({where: ["lower(pregunta) like ?", busqueda], order:"pregunta ASC"}).then(
 //	     function(quizes) {
 // 		res.render('quizes/index.ejs', { quizes: quizes});
 //             }
@@ -79,3 +79,25 @@ exports.answer = function(req, res) {
       );
 };
 
+
+// Controladores new y create para crear preguntas
+
+// GET /quizes/new
+exports.new = function(req, res) {
+   // Creamos un objeto nuevo que luego modificamos
+   var quiz = models.Quiz.build(
+      {pregunta: "Pregunta", respuesta: "Respuesta"}
+   );
+   res.render('quizes/new', {quiz: quiz});
+};
+
+
+// POST /quizes/create
+exports.create = function(req, res) {
+   // Creamos un objeto nuevo con los datos del formulario
+   var quiz = models.Quiz.build( req.body.quiz );
+// guardar en DB los campos pregunta y respuesta de quiz
+   quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
+      res.redirect('/quizes');  
+   })   // res.redirect: Redirección HTTP (URL relativo) a lista de preguntas
+};

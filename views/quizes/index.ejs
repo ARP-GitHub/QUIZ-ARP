@@ -1,16 +1,23 @@
-﻿<form method="get" action="/quizes">
+﻿<div class = "columna">
+    <form method="get" action="/quizes">
 	<label for="search">Buscar pregunta: </label>
 	<input type="text" name="search" placeholder="Texto a buscar"/>
 	<input type="submit" value="Buscar">
-</form>
+    </form>
+    <p>
+       <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
+    </p>
+</div>
 
+<div class = "columna">
+    <table>
+        <% var i; for (i=0; i < quizes.length; i++) { %>        
+           <tr>
+	      <td>
+	         <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
+	      </td>
+           </tr> 
+        <% } %>
+    </table>
+</div>
 
-<table>
-    <% var i; for (i=0; i < quizes.length; i++) { %>        
-       <tr>
-	  <td>
-	    <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
-	  </td>
-       </tr> 
-    <% } %>
-</table>
