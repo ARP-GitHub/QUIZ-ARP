@@ -5,7 +5,9 @@ exports.question = function(req, res) {
 
 // GET /quizes/answer
 exports.answer = function(req, res) {
-   if (req.query.respuesta === 'Roma'){
+   // En la respuesta se admite mayúscula/minúscula indistintamente
+   // Se eliminan espacios inicial y final si se introdujeran
+   if (req.query.respuesta.trim().match(/^roma$/i)){
        res.render('quizes/answer', {respuesta: 'Correcto'});
    } else {
        res.render('quizes/answer', {respuesta: 'Incorrecto'});
