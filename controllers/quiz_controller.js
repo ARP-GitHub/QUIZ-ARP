@@ -31,8 +31,10 @@ exports.show = function(req, res) {
 // GET /quizes/:id/answer
 exports.answer = function(req, res) {
       var resultado = 'Incorrecto';
-      //if (req.query.respuesta.trim().match(/^roma$/i)){
-      if (req.query.respuesta === req.quiz.respuesta) {
+      // En la respuesta se admite mayúscula/minúscula indistintamente
+      // Se eliminan espacios inicial y final si se introdujeran
+      var patt = new RegExp('^' + req.quiz.respuesta + '$', 'i');
+      if (patt.exec(req.query.respuesta.trim())) {
 	  resultado = 'Correcto';
       }
       res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado});
