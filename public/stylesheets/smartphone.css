@@ -22,10 +22,44 @@ section {
    min-height: 480px;
 }
 
-footer, input, div.columna button {
+footer, input, div.columna button#crear {
     font-size: large;
 }
 
 footer a {
    display: inline-block;
+}
+
+div.columna {
+   /*float: left;*/
+   margin: 0.1em 0.1em 0em 0em;
+   padding-left: 0.1em;
+   width:100%;
+}
+
+div.columna table {
+   width: 15em;
+   /*padding-top: 0.5em;*/
+   font-size: 1em;
+}
+
+table td#tematica, table td#preguntas, table td.opciones {
+    border-bottom-width: 0px;
+    text-align: left;
+}
+
+table tr {
+   display:block;
+   margin: 15px 0 0 0;
+}
+
+table td {
+   display:block;
+   border:0;
+}
+
+table td.opciones {
+   display: inline-block;
+   /*margin: 0.2em 0.5em 0.2em 0;
+   padding: 0.2em 0.2em 0 0;*/
 }
