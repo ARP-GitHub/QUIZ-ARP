@@ -1,8 +1,7 @@
 ﻿<div class="columna">
     <form method="get" action="/quizes">
-	<label for="search">Buscar pregunta: </label>
-	<input type="text" name="search" placeholder="Texto a buscar"/>
 	<input type="submit" value="Buscar">
+	<input type="text" name="search" placeholder="Texto a buscar"/>
     </form>
     <p>
        <a href="/quizes/new"><button id="crear" type="button">Crear pregunta</button></a>
@@ -19,6 +18,13 @@
 	      <td>
 		<a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a>
 	      </td>
+	      <td>
+        	 <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
+          	    <button id="borrar" type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+            		borrar
+          	    </button>
+        	 </form>
+      	      </td>
            </tr> 
         <% } %>
     </table>

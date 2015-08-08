@@ -11,6 +11,10 @@ body {
     font: 16px Georgia, serif;
 }
 
+h3 {
+    color: #0000FF;
+}
+
 #page-wrap {
     margin:2% auto;
     color: #FFF;
@@ -28,7 +32,7 @@ section > div {
 }
 
 section {
-    min-height: 250px;
+    min-height: 280px;
 }
 
 header, nav, section, footer {
@@ -40,16 +44,39 @@ nav span {
     margin: 0em 1em 0em 0em;
 }
 
+nav span a {
+    text-decoration:none;
+    color: #047D35;
+}
+
 div.creditos {
     margin: 1em auto;
 }
 
-.columna {
+div.columna {
    float: left;
    border-left: 1px solid #269800;
    text-align:left;
    margin: 0.5em 0.5em 0em 0em;
    padding-left: 0.5em;
+}
+
+div.columna {
+   display:block;
+}
+
+footer.main a {
+   margin:0 1em 0 1em;
+   text-decoration: none;
+   color:#02B9FA; 
+}
+
+nav span a:hover, footer.main a:hover {
+   color:#530406;
+}
+
+button#borrar {
+    color: #FF0000;
 }
 
 #ErrorMsgs { 

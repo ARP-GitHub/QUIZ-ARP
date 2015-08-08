@@ -14,7 +14,18 @@ h2 span, section h3 {
     display: none;
 }
 
-footer, input {
+nav span {
+    margin: 0em 0.1em 0em 0em;
+}
+
+section {
+   min-height: 480px;
+}
+
+footer, input, div.columna button {
     font-size: large;
 }
 
+footer a {
+   display: inline-block;
+}

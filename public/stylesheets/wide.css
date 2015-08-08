@@ -16,7 +16,12 @@ nav {
 }
 
 nav span {
-    margin: 0px 100px 0px 0px;
+    margin: 0em 10em 0em 0em;
+}
+
+nav span a {
+    display:inline-block;
+    margin: 1em 5em 1em 0em;
 }
 
 section {

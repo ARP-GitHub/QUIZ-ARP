@@ -86,7 +86,8 @@ exports.answer = function(req, res) {
 exports.new = function(req, res) {
    // Creamos un objeto nuevo que luego modificamos
    var quiz = models.Quiz.build(
-      {pregunta: "Pregunta", respuesta: "Respuesta"}
+     // {pregunta: "Pregunta", respuesta: "Respuesta"}
+  	{pregunta: "", respuesta: ""}
    );
    res.render('quizes/new', {quiz: quiz, errors: []});
 };
@@ -108,7 +109,7 @@ exports.create = function(req, res) {
 	   // res.redirect: Redirección HTTP (URL relativo) a lista de preguntas
 	 }
       }
-   );
+   ).catch(function(error){next(error)});
 };
 
 
@@ -133,5 +134,16 @@ exports.update = function(req, res) {
            .then( function(){ res.redirect('/quizes');});
        }     // Redirección HTTP a lista de preguntas (URL relativo)
      }
-   );
+   ).catch(function(error){next(error)});
 };
+
+
+// DELETE /quizes/:id
+exports.destroy = function(req, res) {
+  req.quiz.destroy().then( function() {
+    res.redirect('/quizes');
+  }).catch(function(error){next(error)});
+};
+
+
+//  console.log("req.quiz.id: " + req.quiz.id);
