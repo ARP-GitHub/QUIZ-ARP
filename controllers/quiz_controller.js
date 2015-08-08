@@ -30,7 +30,7 @@ exports.index = function(req, res, next) {
    }
    models.Quiz.findAll((busqueda) ? {where: ["lower(pregunta) like ?", busqueda], order:"pregunta ASC"} : {order:"pregunta ASC"}).then(
 	function(quizes) {
-	    res.render('quizes/index.ejs', { quizes: quizes});
+	    res.render('quizes/index.ejs', { quizes: quizes, errors: []});
         }
    ).catch(function(error){next(error)});
 };
@@ -42,14 +42,14 @@ exports.index = function(req, res, next) {
 //	 busqueda = busqueda.replace(/\s/g,'%');
 //	 models.Quiz.findAll({where: ["lower(pregunta) like ?", busqueda], order:"pregunta ASC"}).then(
 //	     function(quizes) {
-// 		res.render('quizes/index.ejs', { quizes: quizes});
+// 		res.render('quizes/index.ejs', { quizes: quizes, errors: []});
 //             }
 //   	 ).catch(function(error) { next(error);});
 //      }
 //      else {
 //	  models.Quiz.findAll({order:"pregunta ASC"}).then(
 //	     function(quizes) {
-//	       res.render('quizes/index.ejs', { quizes: quizes});
+//	       res.render('quizes/index.ejs', { quizes: quizes, errors: []});
 //           }
 //        ).catch(function(error) { next(error);});
 //     }
@@ -58,7 +58,7 @@ exports.index = function(req, res, next) {
 
 // GET /quizes/:id
 exports.show = function(req, res) {
-    	res.render('quizes/show', { quiz: req.quiz});
+    	res.render('quizes/show', { quiz: req.quiz, errors: []});
 };
 
 
@@ -75,7 +75,7 @@ exports.answer = function(req, res) {
           resultado = 'Correcto'; 
       }
       res.render('quizes/answer',
-		 {quiz: req.quiz, respuesta: resultado}
+		 {quiz: req.quiz, respuesta: resultado, errors: []}
       );
 };
 
@@ -88,7 +88,7 @@ exports.new = function(req, res) {
    var quiz = models.Quiz.build(
       {pregunta: "Pregunta", respuesta: "Respuesta"}
    );
-   res.render('quizes/new', {quiz: quiz});
+   res.render('quizes/new', {quiz: quiz, errors: []});
 };
 
 
@@ -96,8 +96,17 @@ exports.new = function(req, res) {
 exports.create = function(req, res) {
    // Creamos un objeto nuevo con los datos del formulario
    var quiz = models.Quiz.build( req.body.quiz );
-// guardar en DB los campos pregunta y respuesta de quiz
-   quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
-      res.redirect('/quizes');  
-   })   // res.redirect: Redirección HTTP (URL relativo) a lista de preguntas
+   quiz.validate().then(
+      function(err){
+         if (err) {
+            res.render('quizes/new', {quiz: quiz, errors: err.errors});
+         } else {
+	 // save: guarda en DB campos pregunta y respuesta de quiz
+         quiz
+	  .save({fields: ["pregunta", "respuesta"]})
+	   .then( function(){ res.redirect('/quizes')})   
+	   // res.redirect: Redirección HTTP (URL relativo) a lista de preguntas
+	 }
+      }
+   );
 };

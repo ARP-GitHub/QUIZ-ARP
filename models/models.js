@@ -38,7 +38,9 @@ exports.Quiz = Quiz;
 sequelize.sync().then(function() {
   // then(..) ejecuta el manejador una vez creada la tabla
   Quiz.count().then(function (count){     
-       if(count === 0) {   // la tabla se inicializa solo si está vacía
+       if(count === 0) {
+	   // la tabla se inicializa solo si está vacía
+	   // al meter más preguntas aquí (registros) hay que borrar la tabla (entorno local), y resetearla (en heroku)
             Quiz.bulkCreate( 
 			[
 			  {pregunta: 'Capital de España',  respuesta: 'Madrid'},
