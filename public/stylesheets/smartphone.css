@@ -22,7 +22,7 @@ section {
    min-height: 480px;
 }
 
-footer, input, div.columna button#crear {
+footer, input, div.colpreg button#crear {
     font-size: large;
 }
 
@@ -30,14 +30,14 @@ footer a {
    display: inline-block;
 }
 
-div.columna {
+div.colpreg, div.coltabla {
    /*float: left;*/
    margin: 0.1em 0.1em 0em 0em;
    padding-left: 0.1em;
    width:100%;
 }
 
-div.columna table {
+div.coltabla table {
    width: 15em;
    /*padding-top: 0.5em;*/
    font-size: 1em;

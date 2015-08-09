@@ -27,10 +27,10 @@ nav span a {
 section {
     float: right;
     width: 80%;
-    min-height: 380px;
+    min-height: 360px;
 }
 
-div.columna table {
+div.coltabla div {
   /*width: 20em;*/
   height: 20em;
 }

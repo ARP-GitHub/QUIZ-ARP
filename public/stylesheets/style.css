@@ -36,7 +36,7 @@ section > div {
 }
 
 section {
-    min-height: 280px;
+    min-height: 300px;
 }
 
 header, nav, section, footer {
@@ -57,7 +57,7 @@ div.creditos {
     margin: 1em auto;
 }
 
-div.columna {
+div.colpreg, div.coltabla {
    float: left;
    border-left: 2px solid #269800;
    text-align:left;
@@ -65,18 +65,20 @@ div.columna {
    padding-left: 0.5em;
 }
 
-div.columna {
-   display:block;
+div.colpreg p {
+   margin-top: 0.2em;
 }
 
-div.columna form label {
+/*div.colpreg form label {
    display: block;
-}
+}*/
 
-div.columna table {
+div.coltabla table {
+ display:block;
+   height:200px;
+   overflow: auto;
   background-color:#F5FAEF;
   /*color:#FFFF00;*/
-  overflow: auto;
   /*width: 30em;*/
   /*height: 12em;*/
   /*margin:1em auto;*/

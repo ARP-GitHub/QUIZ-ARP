@@ -1,4 +1,4 @@
-﻿<div class="columna">
+﻿<div class="colpreg">
     <form method="get" action="/quizes">
 	<input type="submit" value="Buscar">
 	<input type="text" name="search" placeholder="Texto a buscar"/>
@@ -8,14 +8,13 @@
     </p>
 </div>
 
-<div class="columna">
+<div class="coltabla">
     <table>
 	<tr>
     	   <th>Temática</th>
            <th>Pregunta</th>
 	   <th colspan = "2">Opciones</th>
       	</tr>
-
         <% var i; for (i=0; i < quizes.length; i++) { %>        
            <tr>
 	      <td id = "tematica">
@@ -36,6 +35,6 @@
       	      </td>
            </tr> 
         <% } %>
-    </table>
+    </table> 
 </div>
 
