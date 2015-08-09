@@ -41,6 +41,7 @@ div.coltabla table {
    width: 15em;
    /*padding-top: 0.5em;*/
    font-size: 1em;
+   height: 22em;
 }
 
 table td#tematica, table td#preguntas, table td.opciones {

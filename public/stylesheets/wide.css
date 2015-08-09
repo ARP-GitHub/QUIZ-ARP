@@ -30,7 +30,7 @@ section {
     min-height: 360px;
 }
 
-div.coltabla div {
+div.coltabla table {
   /*width: 20em;*/
   height: 20em;
 }

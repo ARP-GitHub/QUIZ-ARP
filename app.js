@@ -1,4 +1,4 @@
-var express = require('express');
+Ôªøvar express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var methodOverride = require('method-override');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 
@@ -15,7 +16,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// El mÛdulo express-partials importa una factorÌa que debe invocarse con () para generar el MW a instalar
+// El m√≥dulo express-partials importa una factor√≠a que debe invocarse con () para generar el MW a instalar
 app.use(partials());
 
 // uncomment after placing your favicon in /public
@@ -24,14 +25,26 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-// eliminamos par·metro configuraciÛn incluido por defecto con express.generator
-// AsÌ el MW bodyparser.unlencoded() analiza correctamente los nombres de los par·metros del formulario (_form.ejs) del objeto quiz
+// eliminamos par√°metro configuraci√≥n incluido por defecto con express.generator
+// As√≠ el MW bodyparser.unlencoded() analiza correctamente los nombres de los par√°metros del formulario (_form.ejs) del objeto quiz
 // y genera el objeto req.body.quiz
 //app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser('Quiz 2015'));
+app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Helpers din√°micos
+app.use(function(req,res,next){
+  //Guardar path en session.redir para despue≈õ de login
+  if(!req.path.match(/\/login|\/logout/)){
+    req.session.redir=req.path;
+  }
+  //Hacer visible req.session en las vistas
+  res.locals.session = req.session;
+  next();
+});
 
 app.use('/', routes);
 
