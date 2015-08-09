@@ -4,7 +4,9 @@
 	<input type="text" name="search" placeholder="Texto a buscar"/>
     </form>
     <p>
+    <% if (session.user) { %>
        <a href="/quizes/new"><button id="crear" type="button">Crear pregunta</button></a>
+    <% } %>
     </p>
 </div>
 
@@ -23,6 +25,7 @@
 	      <td id = "preguntas">
 	         <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
 	      </td>
+	      <% if (session.user) { %>
 	      <td class = "opciones">
 		 <a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a>
 	      </td>
@@ -33,8 +36,11 @@
           	    </button>
         	 </form>
       	      </td>
+	      <% } %>
            </tr> 
         <% } %>
     </table> 
 </div>
+
+
 
