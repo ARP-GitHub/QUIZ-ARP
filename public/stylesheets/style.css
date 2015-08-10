@@ -134,6 +134,15 @@ button#borrar {
     color: #FF0000;
 }
 
+p#nuevocom {
+    margin: 1em auto;
+}
+
+p#comentarios {
+    border-bottom: 1px solid #85F;
+    margin: 0.5em ;
+}
+
 .field { 
    margin: 10px 0;
 }
