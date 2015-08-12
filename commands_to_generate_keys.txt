@@ -1,0 +1,5 @@
+mkdir certs
+cd certs
+openssl genrsa -out quiz-arp-key.pem 2048
+openssl req -new -sha256 -key quiz-arp-key.pem -out quiz-arp-csr.pem -config 'C:\Program Files (x86)\Git\ssl\openssl.cnf'
+openssl x509 -req -in quiz-arp-csr.pem -signkey quiz-arp-key.pem -out quiz-arp-cert.pem
