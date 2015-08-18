@@ -9,15 +9,10 @@ var options = {
   cert: fs.readFileSync('certs/quiz-arp-cert.pem').toString()
 };
 
-/**
- * Get port from environment and store in Express.
- */
+/* Get port from environment and store in Express. */
 app.set('port', process.env.PORT || 3000);
 
-/**
- * Create HTTP server.
- */
-
+/* Create HTTP server.*/
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
@@ -26,3 +21,5 @@ var serverSecure = https.createServer(options,app);
 serverSecure.listen(8443, function () {
   debug('Express-server listening on port ' + server.address().port);
 });
+
+console.log('\n En el navegador ve a la url "http://localhost:5000" ;\n o "https://localhost:8443" ;\n Teclea Ctrl-C para cerrar el servidor' );
