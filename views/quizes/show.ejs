@@ -6,7 +6,7 @@
 
 <p id="nuevocom"><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
 
-<p id="comentarios"><strong>Comentarios:</strong></p>
+<p id="comentarios"><strong>Comentarios publicados:</strong></p>
 <%for(index in quiz.Comments){%>
     <% if (quiz.Comments[index].publicado || session.user) { %>
 	  <p>- <%=quiz.Comments[index].texto%>

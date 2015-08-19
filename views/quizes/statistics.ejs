@@ -1,0 +1,11 @@
+﻿<h1 id = "estadistica">Estadísticas:</h1>
+
+<ul>
+  <li><strong>Número de preguntas:</strong> <span class = "azul"><%= estadistica.preguntas %></span></li>
+  <li><strong>Número de comentarios totales:</strong> <span class = "azul"><%= estadistica.comentarios %></span></li>
+  <li><strong>Media: </strong> <span class = "azul"><%= (estadistica.comentarios / estadistica.preguntas).toFixed(2) + ' comentarios por pregunta' %></span></li>
+  <li><strong>Número de preguntas sin comentarios:</strong> <span class = "azul"><%= estadistica.preguntas_SinComentarios %></span></li>
+  <li><strong>Número de preguntas con comentarios:</strong> <span class = "azul"><%= estadistica.preguntas_ConComentarios %></span></li>
+  <li><strong>Comentarios no publicados:</strong> <span class = "azul"><%= estadistica.comentarios_NoPubli %>
+    (<%= (estadistica.comentarios_NoPubli * 100 / estadistica.comentarios).toFixed(2)+'%'%>)</span></li>
+</ul>

@@ -11,6 +11,11 @@ body {
     font: 16px Georgia, serif;
 }
 
+h1#estadistica {
+    text-decoration: underline;
+    margin-bottom: 0.6em;
+}
+
 h2 {
     color: #000080;
 }
@@ -149,6 +154,11 @@ p#comentarios {
 
 .right {
    float: right;
+}
+
+
+.azul {
+   color: #0000FF;
 }
 
 #ErrorMsgs { 
