@@ -33,19 +33,12 @@ exports.calculate = function(req, res, next) {
 	})
 	.catch(function(err) {
 		errors.push(err);
+		// next(err);
 	})
 	.finally(function(){
 		next();
 	});
 };
-
-
- //   }).catch( function (err) {
-  //      next(err);
- //   }).finally( function() {
- //      next();
-  //  });
-//};
 
 
 // GET /quizes/statistics
